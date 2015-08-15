@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+copyright: (c) 2015 Dennis Sterzenbach.
+
+author: Dennis Sterzenbach <dennis.sterzenbach@gmail.com>
+-->
+<meta charset="utf-8" />
+<title>Dennis Sterzenbach - JavaScript Event Sourcing - Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
+<link href="assets/demo.eventsource.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>Event Sourcing: a JavaScript demo implementation</h1>
+<p>
+Please see the output in developer console.
+</p>
+<button onclick="window.Buttons.sendButtonEvent(this)" data-event-type="test1">send Event 1</button><br>
+<button onclick="window.Buttons.sendButtonEvent(this)" data-event-type="test2">send Event 2</button><br>
+<button onclick="window.Buttons.sendButtonEvent(this)" data-event-type="test3">send Event 3</button><br>
+<button onclick="window.Buttons.sendButtonEvent(this)" data-event-type="test4">send Event 4</button><br>
+<br/>
+<button onclick="window.Buttons.changeEv(this)" data-event-type="testChangeEvent">send Change Event 10=>500</button><br>
+<br/>
+<button onclick="window.Buttons.replay()">replay history (since timestamp marker)</button><br>
+<button onclick="window.Buttons.replayAll()">replay complete history</button><br>
+<br>
+<button onclick="window.Buttons.marker()">set replay timestamp marker</button><br>
+
+<!-- to easily handle cross browser the function keys and helper keys -->
+<script src="vendor/shortcut.js"></script>
+
+<!--
+require lodash as utility, atm. needed by EventStorage.prototype.getAllSince
+this might be extended to more functions
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
+<script src="app/AppEvent.js"></script>
+<script src="app/EventStorage.js"></script>
+<script src="app/Core/Interface.js"></script>
+<script src="app/EventGenerator/AppEventGeneratorInterface.js"></script>
+<script src="app/EventGenerator/AppEventGenerator.js"></script>
+<script src="app/EventBackends/EventReceiverBackendInterface.js"></script>
+<script src="app/EventBackends/EventSourceBackendInterface.js"></script>
+<script src="app/EventBackends/EventSourceEventBackend.js"></script>
+<script src="app/EventReceivers/EventReceiverInterface.js"></script>
+<script src="app/EventReceivers/EventReceiverBase.js"></script>
+<script src="app/EventReceivers/EventReceiverValueChange.js"></script>
+<script src="app/EventSources/EventSourceInterface.js"></script>
+<script src="app/EventSources/EventSource.js"></script>
+
+<script src="app.js"></script>
+<script src="main.page.eventhandlers.js"></script>
+
+</body>
+</html>
